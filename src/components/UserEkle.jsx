@@ -6,6 +6,7 @@ import { ReactComponent as PlusIcon } from "../DeleteIcon/PlusIcon.svg";
 import "../App.css";
 import Button from "@mui/material/Button";
 import axios from "axios"; 
+import { Table } from '@mui/material';
 
 export default function AddUser() {
 const [UserList, setUserList] = useState([]);
@@ -33,7 +34,7 @@ let myId = UserList.length + 1;
 if (todo !== "") {
 setUserList((prevUserList) => [
 ...UserList,
-{ id: myId, todo: todo, isEdit: false },
+{ id: myId, todo: todo, isEdit: false},
 ]);
 
 axios
@@ -120,8 +121,13 @@ key={todoItem.id}
 >
 {todoItem.name}
 
+
 <div>
-<label style={{ fontSize: "20px" }}> {todoItem.todo} </label>
+<Table  style={{ fontSize: "20px" }}> {todoItem.todo} </Table>
+<br/>
+<Table style={{ fontSize: "20px" }}> Date Added:{todoItem.Date} </Table>
+<br/>
+<Table style={{ fontSize: "20px" }}> Added Hour:{todoItem.time} </Table>
 <br />
 {!todoItem.isEdit ? (
 <Button
