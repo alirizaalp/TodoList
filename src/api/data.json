@@ -1,0 +1,25 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "name": "Ali",
+      "isEdit": false,
+      "Date": "19/9/2022",
+      "time": "19:54:482"
+    },
+    {
+      "id": 2,
+      "name": "Veli",
+      "isEdit": false,
+      "Date": "19/9/2022",
+      "time": "20:13:90"
+    },
+    {
+      "id": 3,
+      "name": "akşsşfkas",
+      "isEdit": false,
+      "Date": "19/9/2022",
+      "time": "20:14:13"
+    }
+  ]
+}
