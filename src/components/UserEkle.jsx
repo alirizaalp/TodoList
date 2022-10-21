@@ -6,7 +6,9 @@ import { ReactComponent as PlusIcon } from "../DeleteIcon/PlusIcon.svg";
 import "../App.css";
 import Button from "@mui/material/Button";
 import axios from "axios"; 
-import { Table } from '@mui/material';
+import { FormLabel } from '@mui/material';
+import UserSelect from "../components/UserSelect";
+
 
 export default function AddUser() {
 const [UserList, setUserList] = useState([]);
@@ -34,7 +36,7 @@ let myId = UserList.length + 1;
 if (todo !== "") {
 setUserList((prevUserList) => [
 ...UserList,
-{ id: myId, todo: todo, isEdit: false},
+{ id: myId, todo: todo, isEdit: false,},
 ]);
 
 axios
@@ -68,6 +70,7 @@ setTodo(""); //BURADA AMACIM EKLEME YAPTIKTAN SONRA BOŞ GÖZÜKSÜN İMPUTTA
 // console.log(setTodo)
 };
 
+
 const deleteTodo = (id) => {
 setUserList((prevUserList) =>
 prevUserList.filter((todoItem) => todoItem.id !== id)
@@ -86,7 +89,8 @@ todoItem.id === id
 
 return (
 <div>
-<h1 className="userpanel">User Panel</h1>
+<h1 className="userpanel">User Panel</h1> 
+<UserSelect/>
 <div className="userinput">
 <form className="form" onSubmit={addTodo}>
 <FormControl
@@ -115,7 +119,7 @@ Add User
 style={{
 fontSize: "20px",
 border: "1px solid ",
-borderColor: "#000",
+borderColor: "blue",
 }}
 key={todoItem.id}
 >
@@ -123,12 +127,11 @@ key={todoItem.id}
 
 
 <div>
-<Table  style={{ fontSize: "20px" }}> {todoItem.todo} </Table>
+<FormLabel >{todoItem.todo}</FormLabel>
+<FormLabel style={{color:"white"}}>Date Added: {todoItem.Date}</FormLabel>
 <br/>
-<Table style={{ fontSize: "20px" }}> Date Added:{todoItem.Date} </Table>
+<FormLabel style={{color:"white"}}>Added Hour: {todoItem.time}</FormLabel>
 <br/>
-<Table style={{ fontSize: "20px" }}> Added Hour:{todoItem.time} </Table>
-<br />
 {!todoItem.isEdit ? (
 <Button
   style={{ cursor: "pointer" }}

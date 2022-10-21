@@ -1,5 +1,6 @@
 import "./App.css";
 import AddUser from "./components/UserEkle";
+import DarkMode from "./components/DarkMode"
 
 
 
@@ -7,8 +8,9 @@ import AddUser from "./components/UserEkle";
 function App() {
   return (
     <div className="App">
-        
-      <AddUser />
+      <DarkMode />
+      <AddUser /> 
+      
       
     
      
