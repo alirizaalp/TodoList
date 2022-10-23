@@ -8,6 +8,7 @@ import Button from "@mui/material/Button";
 import axios from "axios"; 
 import { FormLabel } from '@mui/material';
 import UserSelect from "../components/UserSelect";
+import { v4 as uuidv4 } from 'uuid'; //id için tanımladım benzersiz olsun diye.Öbür türlü console da hata aldım.
 
 
 export default function AddUser() {
@@ -32,16 +33,16 @@ localStorage.setItem("UserList", JSON.stringify(UserList));
 });
 
 const addTodo = () => {
-let myId = UserList.length + 1;
+
 if (todo !== "") {
 setUserList((prevUserList) => [
 ...UserList,
-{ id: myId, todo: todo, isEdit: false,},
+{ id: uuidv4(), todo: todo, isEdit: false,},
 ]);
 
 axios
 .post("http://localhost:3002/data", {
-id: myId,
+id: uuidv4(),
 name: todo,
 isEdit: false,
 Date:
@@ -61,6 +62,7 @@ new Date().getSeconds(),
 setUserList([...UserList, response.data]);
 });
 
+
 alert("User added successfully");
 } else {
 alert("Please do not leave blank.");
@@ -71,10 +73,20 @@ setTodo(""); //BURADA AMACIM EKLEME YAPTIKTAN SONRA BOŞ GÖZÜKSÜN İMPUTTA
 };
 
 
+
+
 const deleteTodo = (id) => {
+  axios
+.delete("http://localhost:3002/data/"+ id)
+.then((r) => {
+  console.log(r);
+})
+.catch((e)=>{
+  console.log(e);
+});
 setUserList((prevUserList) =>
 prevUserList.filter((todoItem) => todoItem.id !== id)
-);
+); 
 };
 
 const editTodo = (id) => {
@@ -91,8 +103,8 @@ return (
 <div>
 <h1 className="userpanel">User Panel</h1> 
 <UserSelect/>
-<div className="userinput">
-<form className="form" onSubmit={addTodo}>
+<div className="userinput" >
+<form className="form" onSubmit={addTodo} autoComplete="off">
 <FormControl
 maxLength={12}
 className="logg"

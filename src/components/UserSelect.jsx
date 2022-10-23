@@ -8,6 +8,7 @@ import FormControl from '@mui/material/FormControl';
 import ListItemText from '@mui/material/ListItemText';
 import Select from '@mui/material/Select';
 import Checkbox from '@mui/material/Checkbox';
+import axios from "axios";
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -21,12 +22,18 @@ const MenuProps = {
 };
 
 const names = [ 
+   "ALİRIZA ALP",
+   "TALHA ARSLAN",
+   "HÜSEYİN ALP",
+   "İREM GÜNDÜZ",
+   "",
   
 ];
 
+
 export default function MultipleSelectCheckmarks() {
   const [personName, setPersonName] = React.useState([]);
-  const [Userx,setUserx]=useState("")
+ 
 
   const handleChange = (event) => {
     const {
@@ -37,12 +44,14 @@ export default function MultipleSelectCheckmarks() {
     );
   };
 
+  
+
   return (
     <div >
-      <FormControl sx={{ m: 1, width: 300 }}>
-        <InputLabel sx={{color:"white"}} id="demo-multiple-checkbox-label">USER SELECT</InputLabel>
+      <FormControl className="hi" sx={{ m: 1, width: 300 }}>
+        <InputLabel sx={{color:"black"}} id="demo-multiple-checkbox-label">USER SELECT</InputLabel>
         <Select
-          sx={{color:"white"}}
+          sx={{color:"black"}}
           labelId="demo-multiple-checkbox-label"
           id="demo-multiple-checkbox"
           multiple
