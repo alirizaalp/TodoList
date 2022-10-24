@@ -32,7 +32,7 @@ const names = [
 
 export default function MultipleSelectCheckmarks() {
   const [personName, setPersonName] = React.useState([]);
-  const [todo,setTodo]=useState("")
+
  
   useEffect(() => {
     axios.get(`http://localhost:3002/data`).then((response) => {
@@ -46,7 +46,19 @@ export default function MultipleSelectCheckmarks() {
     
   const handleChange = (event) => {
     axios
-   .post("http://localhost:3002/data")
+   .post("http://localhost:3002/data", {
+    name: names,
+    Date: new Date().getDate() + "/" + (new Date().getMonth()) + "/" + (new Date().getFullYear()),
+    time:
+new Date().getHours() +
+":" +
+new Date().getMinutes() +
+":" +
+new Date().getSeconds(),
+}).then((response) => {
+    setPersonName([...personName, response.data]);
+}).catch(error => console.log(error))
+    setPersonName()
     const {
       target: { value },
     } = event;

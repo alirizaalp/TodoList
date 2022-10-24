@@ -130,7 +130,7 @@ Add User
 <div
 style={{
 fontSize: "20px",
-border: "1px solid ",
+border: "2px solid ",
 borderColor: "blue",
 }}
 key={todoItem.id}
