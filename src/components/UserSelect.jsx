@@ -1,5 +1,5 @@
 //20.10.2022 tanımlandı düzenlenecek. 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import React from "react";
 import OutlinedInput from '@mui/material/OutlinedInput';
 import InputLabel from '@mui/material/InputLabel';
@@ -25,7 +25,6 @@ const names = [
    "ALİRIZA ALP",
    "TALHA ARSLAN",
    "HÜSEYİN ALP",
-   "İREM GÜNDÜZ",
    "",
   
 ];
@@ -33,9 +32,21 @@ const names = [
 
 export default function MultipleSelectCheckmarks() {
   const [personName, setPersonName] = React.useState([]);
+  const [todo,setTodo]=useState("")
  
+  useEffect(() => {
+    axios.get(`http://localhost:3002/data`).then((response) => {
+    setPersonName(response.data);
+    });
+    }, []);
+  
+    useEffect(() => console.log(personName), [personName]);
 
+    
+    
   const handleChange = (event) => {
+    axios
+   .post("http://localhost:3002/data")
     const {
       target: { value },
     } = event;
