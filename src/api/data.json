@@ -1,32 +1,36 @@
 {
   "data": [
     {
-      "id": "2c28c895-3009-49c0-abf4-c4d5d6e841ea",
-      "name": "Alp",
+      "id": "82000b1a-249a-4c88-9b47-8d707dd51009",
+      "name": "Kitap okunacak",
       "isEdit": false,
+      "isCompleted": false,
       "Date": "25/9/2022",
-      "time": "17:19:2"
+      "time": "18:2:13"
     },
     {
-      "id": "ebb2ab53-3779-47b8-b0c7-67973a8acac7",
-      "name": "Rıza",
+      "id": "bb725066-aa95-4502-a5f2-0a9db9204f85",
+      "name": "Tekrar Yapılacak",
       "isEdit": false,
+      "isCompleted": false,
       "Date": "25/9/2022",
-      "time": "17:19:6"
+      "time": "18:2:32"
     },
     {
-      "id": "9b5a1d46-8eb2-4114-8a24-6327e30ccaef",
-      "name": "Ali",
+      "id": "f5721c3c-bf01-469d-942b-8c2794fc64d8",
+      "name": "Yemek Pişirilecek",
       "isEdit": false,
+      "isCompleted": false,
       "Date": "25/9/2022",
-      "time": "17:19:8"
+      "time": "18:2:51"
     },
     {
-      "id": "4a5b88b5-74c6-478a-8005-41f6340ce178",
-      "name": "Talha",
+      "id": "3982af49-5574-4ee4-9b00-4577b48dfe1c",
+      "name": "Yazılı Yapılacak",
       "isEdit": false,
+      "isCompleted": false,
       "Date": "25/9/2022",
-      "time": "17:19:29"
+      "time": "18:7:38"
     }
   ]
 }

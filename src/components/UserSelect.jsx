@@ -1,5 +1,5 @@
 //20.10.2022 tanımlandı düzenlenecek. 
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import React from "react";
 import {OutlinedInput,Checkbox,Select,ListItemText,FormControl,MenuItem,InputLabel} from '@mui/material';
 import axios from "axios";
@@ -34,7 +34,7 @@ const names = [
 
 export default function MultipleSelectCheckmarks() {
   const [personName, setPersonName] = React.useState([]);
-  const [todo,setTodo] = useState("");
+ 
   
 
 
@@ -77,7 +77,7 @@ export default function MultipleSelectCheckmarks() {
   return (
     <div >
       <FormControl className="hi" sx={{ m: 1, width: 300 }}>
-        <InputLabel sx={{ color: "black" }} id="demo-multiple-checkbox-label">USER SELECT</InputLabel>
+        <InputLabel sx={{ color: "black" }} id="demo-multiple-checkbox-label">TODO SELECT</InputLabel>
         <Select
           sx={{ color: "black" }}
           labelId="demo-multiple-checkbox-label"

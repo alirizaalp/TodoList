@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
-import { FormControl,Form } from "react-bootstrap";
+import { FormControl, Form } from "react-bootstrap";
 import { ReactComponent as DeleteIcon } from "../DeleteIcon/DeleteIcon.svg";
 import { ReactComponent as PlusIcon } from "../DeleteIcon/PlusIcon.svg";
 import { ReactComponent as TobeVisible } from "../DeleteIcon/TobeVisible.svg";
 import "../App.css";
-import axios from "axios"; 
-import { FormLabel,Button } from '@mui/material';
+import axios from "axios";
+import { FormLabel, Button } from '@mui/material';
 import UserSelect from "../components/UserSelect";
 import { v4 as uuidv4 } from 'uuid'; //id için tanımladım benzersiz olsun diye.Öbür türlü console da hata aldım.
 
@@ -37,7 +37,7 @@ const addTodo = () => {
 if (todo !== "") {
 setUserList((prevUserList) => [
 ...UserList,
-{ id: uuidv4(), todo: todo, isEdit: false,isCompleted:false},
+{ id: uuidv4(), todo: todo, isEdit: false, isCompleted: false },
 ]);
 
 axios
@@ -45,6 +45,7 @@ axios
 id: uuidv4(),
 name: todo,
 isEdit: false,
+isCompleted: false,
 Date:
 new Date().getDate() +
 "/" +
@@ -76,17 +77,17 @@ setTodo(""); //BURADA AMACIM EKLEME YAPTIKTAN SONRA BOŞ GÖZÜKSÜN İMPUTTA
 
 
 const deleteTodo = (id) => {
-  axios
-.delete("http://localhost:3002/data/"+ id)
+axios
+.delete("http://localhost:3002/data/" + id)
 .then((r) => {
-  console.log(r);
+console.log(r);
 })
-.catch((e)=>{
-  console.log(e);
+.catch((e) => {
+console.log(e);
 });
 setUserList((prevUserList) =>
 prevUserList.filter((todoItem) => todoItem.id !== id)
-); 
+);
 };
 
 const editTodo = (id) => {
@@ -99,20 +100,20 @@ todoItem.id === id
 );
 };
 
-const completeTodo=(id)=>{
-  setUserList(prevUserList=> prevUserList.map(todoItem=>todoItem.id === id ? {...todoItem, isCompleted: !todoItem.isCompleted} : todoItem))
+const completeTodo = (id) => {
+setUserList(prevUserList => prevUserList.map(todoItem => todoItem.id === id ? { ...todoItem, isCompleted: !todoItem.isCompleted } : todoItem))
 }
 
 return (
 <div>
-<h1 className="userpanel">User Panel</h1> 
-<UserSelect/>
+<h1 className="userpanel">TodoList</h1>
+<UserSelect />
 <div className="userinput" >
 <form className="form" onSubmit={addTodo} autoComplete="off">
 <FormControl
-maxLength={12}
+maxLength={50}
 className="logg"
-placeholder="Enter Username"
+placeholder="Enter Todo"
 value={todo}
 onChange={(event) => setTodo(event.target.value)}
 />
@@ -124,7 +125,7 @@ color="success"
 type="submit"
 onClick={() => addTodo()}
 >
-Add User
+Add Todo
 </Button>
 <div />
 </div>
@@ -139,16 +140,16 @@ borderColor: "blue",
 }}
 key={todoItem.id}
 >
-  <Form.Check
-  type="checkbox"
-  onChange={() => completeTodo(todoItem.id)}
-  variant="contained"
-  color="error"
-  onClick={()=> editTodo(todoItem.id)}
-  startıcon={<TobeVisible />}
-  value={todoItem.isCompleted}
-  />
-  <label className={{textDecoration: todoItem.isCompleted ? "line-through" : 'none'}}> 
+<Form.Check
+type="checkbox"
+onChange={() => completeTodo(todoItem.id)}
+variant="contained"
+color="error"
+onClick={() => editTodo(todoItem.id)}
+startıcon={<TobeVisible />}
+value={todoItem.isCompleted}
+/>
+<label className={{ textDecoration: todoItem.isCompleted ? "line-through" : 'none' }}>
 {todoItem.name}
 </label>
 
@@ -156,27 +157,27 @@ key={todoItem.id}
 
 <div>
 <FormLabel >{todoItem.todo}</FormLabel>
-<FormLabel style={{color:"white"}}>Date Added: {todoItem.Date}</FormLabel>
-<br/>
-<FormLabel style={{color:"white"}}>Added Hour: {todoItem.time}</FormLabel>
-<br/>
+<FormLabel style={{ color: "white" }}>Date Added: {todoItem.Date}</FormLabel>
+<br />
+<FormLabel style={{ color: "white" }}>Added Hour: {todoItem.time}</FormLabel>
+<br />
 {!todoItem.isEdit ? (
 <Button
-  style={{ cursor: "pointer" }}
-  onClick={() => editTodo(todoItem.id)}
-  variant="contained"
-  endIcon={<PlusIcon />}
+style={{ cursor: "pointer" }}
+onClick={() => editTodo(todoItem.id)}
+variant="contained"
+endIcon={<PlusIcon />}
 >
-  Send
+Send
 </Button>
 ) : (
 <Button
-  onClick={() => deleteTodo(todoItem.id)}
-  variant="contained"
-  color="error"
-  startIcon={<DeleteIcon />}
+onClick={() => deleteTodo(todoItem.id)}
+variant="contained"
+color="error"
+startIcon={<DeleteIcon />}
 >
-  Delete
+Delete
 </Button>
 )}
 </div>
