@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
-import { FormControl } from "react-bootstrap";
+import { FormControl,Form } from "react-bootstrap";
 import { ReactComponent as DeleteIcon } from "../DeleteIcon/DeleteIcon.svg";
 import { ReactComponent as PlusIcon } from "../DeleteIcon/PlusIcon.svg";
+import { ReactComponent as TobeVisible } from "../DeleteIcon/TobeVisible.svg";
 import "../App.css";
-import Button from "@mui/material/Button";
 import axios from "axios"; 
-import { FormLabel } from '@mui/material';
+import { FormLabel,Button } from '@mui/material';
 import UserSelect from "../components/UserSelect";
 import { v4 as uuidv4 } from 'uuid'; //id için tanımladım benzersiz olsun diye.Öbür türlü console da hata aldım.
 
@@ -37,7 +37,7 @@ const addTodo = () => {
 if (todo !== "") {
 setUserList((prevUserList) => [
 ...UserList,
-{ id: uuidv4(), todo: todo, isEdit: false,},
+{ id: uuidv4(), todo: todo, isEdit: false,isCompleted:false},
 ]);
 
 axios
@@ -99,6 +99,10 @@ todoItem.id === id
 );
 };
 
+const completeTodo=(id)=>{
+  setUserList(prevUserList=> prevUserList.map(todoItem=>todoItem.id === id ? {...todoItem, isCompleted: !todoItem.isCompleted} : todoItem))
+}
+
 return (
 <div>
 <h1 className="userpanel">User Panel</h1> 
@@ -135,7 +139,19 @@ borderColor: "blue",
 }}
 key={todoItem.id}
 >
+  <Form.Check
+  type="checkbox"
+  onChange={() => completeTodo(todoItem.id)}
+  variant="contained"
+  color="error"
+  onClick={()=> editTodo(todoItem.id)}
+  startıcon={<TobeVisible />}
+  value={todoItem.isCompleted}
+  />
+  <label className={{textDecoration: todoItem.isCompleted ? "line-through" : 'none'}}> 
 {todoItem.name}
+</label>
+
 
 
 <div>
