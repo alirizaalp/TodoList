@@ -15,6 +15,7 @@ export default function AddUser() {
 const [UserList, setUserList] = useState([]);
 const [todo, setTodo] = useState("");
 
+
 useEffect(() => {
 axios.get(`http://localhost:3002/data`).then((response) => {
 setUserList(response.data);
@@ -33,7 +34,6 @@ localStorage.setItem("UserList", JSON.stringify(UserList));
 });
 
 const addTodo = () => {
-
 if (todo !== "") {
 setUserList((prevUserList) => [
 ...UserList,
@@ -149,6 +149,7 @@ onClick={() => editTodo(todoItem.id)}
 startıcon={<TobeVisible />}
 value={todoItem.isCompleted}
 />
+
 <label className={{ textDecoration: todoItem.isCompleted ? "line-through" : 'none' }}>
 {todoItem.name}
 </label>

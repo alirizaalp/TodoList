@@ -1,9 +1,9 @@
-//20.10.2022 tanımlandı düzenlenecek. 
+//28.10.2022 düzenliyor. 
 import { useEffect } from "react";
 import React from "react";
-import {OutlinedInput,Checkbox,Select,ListItemText,FormControl,MenuItem,InputLabel} from '@mui/material';
+import { OutlinedInput, Checkbox, Select, ListItemText, FormControl, MenuItem, InputLabel } from '@mui/material';
 import axios from "axios";
-import { v4 as uuidv4 } from 'uuid';
+
 
 
 
@@ -26,44 +26,22 @@ const names = [
   "ALİRIZA ALP",
   "TALHA ARSLAN",
   "HÜSEYİN ALP",
-  "",
-
+  "İREM GÜNDÜZ",
+  "EYLÜL ALP"
 ];
 
 
 
 export default function MultipleSelectCheckmarks() {
   const [personName, setPersonName] = React.useState([]);
- 
+
   
-
-
-  useEffect(() => {
-    axios.get(`http://localhost:3002/data`).then((response) => {
-      setPersonName(response.data);
-    });
-  }, []);
 
   useEffect(() => console.log(personName), [personName]);
 
 
 
   const handleChange = (event) => {
-    axios
-      .post("http://localhost:3002/data/", {
-        id:uuidv4(),
-        name: names,
-        Date: new Date().getDate() + "/" + (new Date().getMonth()) + "/" + (new Date().getFullYear()),
-        time:
-          new Date().getHours() +
-          ":" +
-          new Date().getMinutes() +
-          ":" +
-          new Date().getSeconds(),
-      }).then((response) => {
-        setPersonName([...personName, response.data]);
-      }).catch(error => console.log(error))
-    setPersonName()
     const {
       target: { value },
     } = event;
