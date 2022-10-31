@@ -1,12 +1,7 @@
-//28.10.2022 düzenliyor. 
-import { useEffect } from "react";
+import { useEffect,useState } from "react";
 import React from "react";
-import { OutlinedInput, Checkbox, Select, ListItemText, FormControl, MenuItem, InputLabel } from '@mui/material';
+import { OutlinedInput,Select, ListItemText, FormControl, MenuItem, InputLabel } from '@mui/material';
 import axios from "axios";
-
-
-
-
 
 
 
@@ -33,9 +28,13 @@ const names = [
 
 
 export default function MultipleSelectCheckmarks() {
-  const [personName, setPersonName] = React.useState([]);
+  const [personName, setPersonName] = useState([]);
 
-  
+   useEffect(() => {
+    axios.get(`http://localhost:3002/user`).then((response) => {
+      setPersonName(response.data);
+    });
+  }, []);
 
   useEffect(() => console.log(personName), [personName]);
 
@@ -63,13 +62,12 @@ export default function MultipleSelectCheckmarks() {
           multiple
           value={personName}
           onChange={handleChange}
-          input={<OutlinedInput label="Tag" />}
-          renderValue={(selected) => selected.join(', ')}
+          input={<OutlinedInput label="Select" />}
+          renderValue={(selected) => selected.join(',')}
           MenuProps={MenuProps}
         >
-          {names.map((name) => (
-            <MenuItem key={name} value={name}>
-              <Checkbox checked={personName.indexOf(name) > -1} />
+          {names.map((name,i) => (
+            <MenuItem key={i} value={name}>
               <ListItemText primary={name} />
             </MenuItem>
           ))}

@@ -107,7 +107,13 @@ setUserList(prevUserList => prevUserList.map(todoItem => todoItem.id === id ? { 
 return (
 <div>
 <h1 className="userpanel">TodoList</h1>
-<UserSelect />
+<UserSelect 
+todo={todo}
+setUserList={setUserList}
+UserList={UserList}
+kas="sadfasdf"
+
+/>
 <div className="userinput" >
 <form className="form" onSubmit={addTodo} autoComplete="off">
 <FormControl
