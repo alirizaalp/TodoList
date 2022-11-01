@@ -49,7 +49,7 @@ isCompleted: false,
 Date:
 new Date().getDate() +
 "/" +
-new Date().getMonth() +
+(new Date().getMonth()+1) +
 "/" +
 new Date().getFullYear(),
 time:
@@ -111,7 +111,8 @@ return (
 todo={todo}
 setUserList={setUserList}
 UserList={UserList}
-kas="sadfasdf"
+setTodo={setTodo}
+
 
 />
 <div className="userinput" >

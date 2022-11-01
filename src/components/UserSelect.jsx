@@ -2,6 +2,8 @@ import { useEffect,useState } from "react";
 import React from "react";
 import { OutlinedInput,Select, ListItemText, FormControl, MenuItem, InputLabel } from '@mui/material';
 import axios from "axios";
+import { v4 as uuidv4 } from 'uuid';
+
 
 
 
@@ -17,30 +19,46 @@ const MenuProps = {
   },
 };
 
-const names = [
-  "ALİRIZA ALP",
-  "TALHA ARSLAN",
-  "HÜSEYİN ALP",
-  "İREM GÜNDÜZ",
-  "EYLÜL ALP"
-];
 
 
 
-export default function MultipleSelectCheckmarks() {
+
+export default function MultipleSelectCheckmarks({todo,UserList,setUserList,setTodo}) {
   const [personName, setPersonName] = useState([]);
-
-   useEffect(() => {
-    axios.get(`http://localhost:3002/user`).then((response) => {
-      setPersonName(response.data);
-    });
-  }, []);
+ 
+  const names = [
+   todo
+  ];
+ 
+  // useEffect(() => {
+  //   axios.get(`http://localhost:3002/data`).then((response) => {
+  //     setPersonName(response.data);
+  //   });
+  // }, []);
 
   useEffect(() => console.log(personName), [personName]);
 
 
 
   const handleChange = (event) => {
+    if (todo !== "") {
+      setUserList((prevUserList) => [
+      ...UserList,
+      { id: uuidv4(), todo: todo, names:names},
+      ]);
+      axios
+.post("http://localhost:3002/data", {
+id: uuidv4(),
+name: todo,
+names:names
+})
+.then((response) => {
+setUserList([...UserList, response.data]);
+});
+
+setTodo(""); //BURADA AMACIM EKLEME YAPTIKTAN SONRA BOŞ GÖZÜKSÜN İMPUTTA
+// console.log(setTodo)
+};
     const {
       target: { value },
     } = event;
@@ -62,7 +80,7 @@ export default function MultipleSelectCheckmarks() {
           multiple
           value={personName}
           onChange={handleChange}
-          input={<OutlinedInput label="Select" />}
+          input={<OutlinedInput id="uuidv4()" label="Select" />}
           renderValue={(selected) => selected.join(',')}
           MenuProps={MenuProps}
         >

@@ -7,10 +7,6 @@
 Bilgisayarınızda node.js kurulu olmalıdır.
 Node.js bilgisayarınızda kurulu değilse node.js'yi indirin
 
-### `npm i react-script`;
-Visual studio code,clone yaptığımız klasörü açtıktan sonra terminal kısmına gelerek **npm i react-script** eğer hata alırsanız **npx i react-script --force** yazarak node modüles eklentisini ekleyiniz.
-
-
 ### `npm start`;
 VİSUAL STUDİO TERMİNALE NPM START YAZINIZ.
 Tarayıcınızda görüntülemek için [http://localhost:3000](http://localhost:3000) dosyasını açın.
