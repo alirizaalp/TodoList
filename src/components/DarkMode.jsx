@@ -1,4 +1,4 @@
-//21.10.22 tanımlandı.
+
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 

@@ -4,22 +4,21 @@
 **### `TO RUN THE PROJECT`;**
 
 ### `download Node.js`;
-Bilgisayarınızda node.js kurulu olmalıdır.
-Node.js bilgisayarınızda kurulu değilse node.js'yi indirin
+You must have node.js installed on your computer. Download node.js if you don't have Node.js installed on your computer.
 
 ### `npm start`;
-VİSUAL STUDİO TERMİNALE NPM START YAZINIZ.
-Tarayıcınızda görüntülemek için [http://localhost:3000](http://localhost:3000) dosyasını açın.
+WRITE NPM START IN VISUAL STUDIO TERMINAL.
+To view in your browser [http://localhost:3000](http://localhost:3000) open the file.
 
-**#PROJEYİ GÖRMEK İÇİN;**
-PROJEYİ CODE KISMINDAN DOWNLOAD ZİP ŞEKLİNDE İNDİRİNİZ,İNDİRDİKTEN SONRA ZİP KLASÖRÜNÜ AYIKLAYIP NORMAL KLASÖR İÇİNDE VİSUAL STUDİO CODE İLE BİRLİKTE ÇALIŞTIRINIZ,ÇALIŞTIRDIKTAN SONRA NPM RUN START YAPARAK SAYFAMI AÇINIZ.
-BUNU YAPTIKTAN HEMEN SONRA İSE TERMİNALE GELEREK JSONDAKİ VERİLERİMİ GÖRMEK İÇİN  **npx json-server --watch data.json --port 3002** yaparak locali  http://localhost:3002 şeklinde yukarıda sekmede açılacaktır.Ardından http://localhost:3000'deki sayfamı yenileyerek verilere erişebilirsiniz.
+**#TO SEE THE PROJECT;**
+DOWNLOAD THE PROJECT AS ZIP FROM THE CODE SECTION, AFTER DOWNLOADING, REMOVE THE ZIP FOLDER AND RUN WITH THE VISUAL STUDIO CODE IN NORMAL FOLDER, AFTER RUN, type npm i. OPEN MY PAGE BY DOING NPM RUN START.
+AFTER DOING THIS, COME TO THE TERMINAL IMMEDIATELY TO SEE MY DATA IN JSON  **npx json-server --watch data.json --port 3002** by making local  http://localhost:3002 will open in the tab above.Next http://localhost:3000'deki you can access the data by refreshing the page.
 
 
 
 **#TODOLİST**
-PROJEMDE ENTER TODO YAZAN YERE YAPMAK İSTEDİĞİNİZ PROJELERİ EKLEYEBİLİRSİNİZ.
-HER PROJEYİ YAPTIĞINIZDA CHECKBOXA TIKLAYIP DELETE TUŞUNA BASIP TAMAMLADIKTAN SONRA SİLEBİLİRSİNİZ.
-HER KAYDETTİĞİNİZ TODOLARI DELETE YAPMADIKÇA DATA.JSON DOSYASININ İÇİNE KAYITLI OLARAK TUTULACAKTIR.EKLEDİĞİNİZ VERİLERİ SONRASINDA DATA.JSON DA GÖREBİLİRSİNİZ.
+WHEN TODO IS WRITTEN, YOU CAN ADD THE PROJECTS YOU WANT TO DO TO MY PROJECT.
+YOU CAN CLICK ON THE CONTROL BOX AND CLICK THE DELETE BUTTON TO DELETE EACH PROJECT AFTER COMPLETED.
+EVERY TODO YOU SAVED WILL BE RECORDED IN THE DATA.JSON FILE UNLESS YOU DELETE TODOS. YOU CAN ALSO SEE DATA.JSON AFTER ADDING.
 
 
